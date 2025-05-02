@@ -1,0 +1,149 @@
+body {
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #e3f0ff 0%, #f7f7fa 100%);
+    color: #23272f;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    position: relative;
+}
+body::before {
+    background-image: url('data:image/svg+xml;utf8,<svg width="220" height="220" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg"><g stroke="%231976d2" stroke-width="2"><line x1="80" y1="20" x2="80" y2="200"/><line x1="140" y1="20" x2="140" y2="200"/><line x1="20" y1="80" x2="200" y2="80"/><line x1="20" y1="140" x2="200" y2="140"/></g><g stroke="%231976d2" stroke-width="4"><line x1="35" y1="35" x2="70" y2="70"/><line x1="70" y1="35" x2="35" y2="70"/></g><circle cx="175" cy="175" r="24" stroke="%231976d2" stroke-width="4" fill="none"/></svg>');
+    background-size: 260px 260px;
+    background-repeat: repeat;
+    background-position: center;
+    opacity: 0.09;
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+nav {
+    background: transparent;
+    box-shadow: none;
+    padding: 2.5em 0 0em 0;
+    position: relative;
+    text-align: center;    
+    z-index: 1;
+}
+nav ul {
+    display: inline-flex;
+    gap: 2em;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 16px rgba(44,62,80,0.10);
+    padding: 0.9em 2em;
+    margin: 0;
+    align-items: center;
+}
+nav ul li {
+    margin: 0;
+    list-style: none;
+}
+nav ul li a {
+    color: #1976d2;
+    background: none;
+    font-weight: 600;
+    padding: 0.5em 1.3em;
+    border-radius: 16px;
+    letter-spacing: 0.03em;
+    text-decoration: none;
+    font-size: 1.08em;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s;
+    box-shadow: none;
+    position: relative;
+    z-index: 1;
+}
+nav ul li a.active, nav ul li a:hover {
+    background: linear-gradient(90deg, #4fc3f7 60%, #1976d2 100%);
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(79,195,247,0.13);
+    transform: translateY(-2px) scale(1.06);
+}
+main {
+    max-width: 650px;
+    margin: 2.5em auto;
+    background: #fff;
+    padding: 2.5em 2em 2em 2em;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(44,62,80,0.10);
+    animation: fadeIn 0.7s;
+    position: relative;
+    z-index: 1;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: none; }
+}
+h1 {
+    color: #1976d2;
+    margin-top: 0;
+    font-size: 2.2em;
+    letter-spacing: 0.01em;
+}
+h2 {
+    color: #333;
+    margin-bottom: 0.5em;
+    font-size: 1.3em;
+    border-left: 4px solid #4fc3f7;
+    padding-left: 0.5em;
+    background: #f2faff;
+    border-radius: 4px;
+    display: inline-block;
+}
+ul, ol {
+    margin-left: 1.5em;
+    margin-bottom: 1.2em;
+    font-size: 1.08em;
+}
+ul li, ol li {
+    margin-bottom: 0.5em;
+    line-height: 1.6;
+}
+.main-image {
+    display: block;
+    margin: 1.5em auto 2em auto;
+    max-width: 260px;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(44,62,80,0.13);
+    border: 3px solid #e3f0ff;
+}
+section {
+    margin-bottom: 2.2em;
+    padding-bottom: 0.5em;
+}
+section:last-child {
+    margin-bottom: 0;
+}
+/* Add a subtle card effect for About section */
+section h2 + p, section h2 + ul, section h2 + ol {
+    background: #f8fbff;
+    border-radius: 6px;
+    padding: 0.7em 1em;
+    box-shadow: 0 1px 4px rgba(44,62,80,0.04);
+}
+
+.team-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1em;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.team-table th, .team-table td {
+    border: 1px solid #ddd;
+    padding: 0.75em 1em;
+    text-align: left;
+}
+
+.team-table th {
+    background: #f4f4f4;
+    color: #333;
+    font-weight: 600;
+}
+
+.team-table tr:nth-child(even) {
+    background: #fafafa;
+}
