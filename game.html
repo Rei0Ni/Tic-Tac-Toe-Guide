@@ -26,16 +26,28 @@
             <div class="game">
                 <div class="board" id="board">
                 </div>
-                <button id="reset">Reset Game</button>
+                <button id="reset" style="display:none;">Reset Game</button>
                 <p id="game-status">Player X's turn</p>
+                
             </div>
-            
         </section>
+        <div id="game-modal" class="game-modal" style="display:none;">
+            <div class="game-modal-backdrop"></div>
+            <div class="game-modal-dialog">
+                <div class="game-modal-content">
+                    <p id="modal-message"></p>
+                    <button id="modal-reset">Reset Game</button>
+                </div>
+            </div>
+        </div>
     </main>
     <script>
         const boardElement = document.getElementById('board');
         const statusElement = document.getElementById('game-status');
         const resetButton = document.getElementById('reset');
+        const modal = document.getElementById('game-modal');
+        const modalMessage = document.getElementById('modal-message');
+        const modalReset = document.getElementById('modal-reset');
 
         let board = ['', '', '', '', '', '', '', '', ''];
         let currentPlayer = 'X';
@@ -56,6 +68,9 @@
                 cellElement.addEventListener('click', handleCellClick);
                 boardElement.appendChild(cellElement);
             });
+            if (gameActive) {
+                document.getElementById('reset').style.display = 'none';
+            }
         }
 
         function handleCellClick(event) {
@@ -79,12 +94,16 @@
             if (roundWon) {
                 statusElement.textContent = `Player ${currentPlayer} wins!`;
                 gameActive = false;
+                document.getElementById('reset').style.display = 'none';
+                showModal(`Player ${currentPlayer} wins!`);
                 return;
             }
 
             if (!board.includes('')) {
                 statusElement.textContent = `It's a draw!`;
                 gameActive = false;
+                document.getElementById('reset').style.display = 'none';
+                showModal(`It's a draw!`);
                 return;
             }
 
@@ -98,6 +117,29 @@
             currentPlayer = 'X';
             statusElement.textContent = `Player ${currentPlayer}'s turn`;
             initializeBoard();
+            document.getElementById('reset').style.display = 'none';
+        });
+
+        modalReset.addEventListener('click', () => {
+            board = ['', '', '', '', '', '', '', '', ''];
+            gameActive = true;
+            currentPlayer = 'X';
+            statusElement.textContent = `Player ${currentPlayer}'s turn`;
+            initializeBoard();
+            hideModal();
+        });
+
+        function showModal(message) {
+            modalMessage.textContent = message;
+            modal.style.display = 'block';
+        }
+
+        function hideModal() {
+            modal.style.display = 'none';
+        }
+
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) hideModal();
         });
 
         initializeBoard();
